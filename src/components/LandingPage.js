@@ -6,7 +6,7 @@ const LandingPage = () => {
   const [selectedRole, setSelectedRole] = useState(null);
   const modalRef = useRef(null);
   const servicesRef = useRef([]);
-  const portfoliosRef = useRef([]);
+  const portfolioRef = useRef([]);
   const testimonialsRef = useRef([]);
   const [activeSection, setActiveSection] = useState(0);
 
@@ -28,12 +28,12 @@ const LandingPage = () => {
       { threshold: 0.1 }
     );
 
-    [...servicesRef.current, ...portfoliosRef.current, ...testimonialsRef.current].forEach((ref) => {
+    [...servicesRef.current, ...portfolioRef.current, ...testimonialsRef.current].forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
-      [...servicesRef.current, ...portfoliosRef.current, ...testimonialsRef.current].forEach((ref) => {
+      [...servicesRef.current, ...portfolioRef.current, ...testimonialsRef.current].forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
@@ -44,7 +44,7 @@ const LandingPage = () => {
     const sections = [
       { id: 'home', index: 0 },
       { id: 'services', index: 1 },
-      { id: 'portfolios', index: 2 },
+      { id: 'portfolio', index: 2 },
       { id: 'testimonials', index: 3 }
     ];
 
@@ -152,7 +152,7 @@ const LandingPage = () => {
     }
   ];
 
-  const portfolios = [
+  const portfolio = [
     {
       title: 'Vector Oriented Design',
       icon: '🎨',
@@ -224,7 +224,7 @@ const LandingPage = () => {
     }
   };
 
-  const sections = ['home', 'services', 'portfolios', 'testimonials'];
+  const sections = ['home', 'services', 'portfolio', 'testimonials'];
 
   const scrollToSectionByIndex = (index) => {
     scrollToSection(sections[index]);
@@ -246,7 +246,7 @@ const LandingPage = () => {
           <nav className="nav">
             <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>Home</a>
             <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }}>Services</a>
-            <a href="#portfolios" onClick={(e) => { e.preventDefault(); scrollToSection('portfolios'); }}>Portfolios</a>
+            <a href="#portfolio" onClick={(e) => { e.preventDefault(); scrollToSection('portfolio'); }}>portfolio</a>
             <a href="#testimonials" onClick={(e) => { e.preventDefault(); scrollToSection('testimonials'); }}>Testimonials</a>
           </nav>
           <button className="cta-button header-cta">Let's Talk</button>
@@ -336,20 +336,20 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Portfolios Section */}
-      <section id="portfolios" className="portfolios-section">
+      {/* portfolio Section */}
+      <section id="portfolio" className="portfolio-section">
         <div className="section-container">
           <h2 className="section-title">
-            Portfolios.
+            portfolio.
             <span className="title-underline"></span>
           </h2>
-          <p className="section-subtitle">Click on the cards to see my portfolios of related category.</p>
-          <div className="portfolios-grid">
-            {portfolios.map((portfolio, index) => (
+          <p className="section-subtitle">Click on the cards to see my portfolio of related category.</p>
+          <div className="portfolio-grid">
+            {portfolio.map((portfolio, index) => (
               <div
                 key={index}
                 className={`portfolio-card ${portfolio.isCTA ? 'portfolio-cta' : ''}`}
-                ref={(el) => (portfoliosRef.current[index] = el)}
+                ref={(el) => (portfolioRef.current[index] = el)}
                 onClick={() => !portfolio.isCTA && openModal(portfolio)}
                 role={portfolio.isCTA ? undefined : "button"}
                 tabIndex={portfolio.isCTA ? undefined : 0}

@@ -593,14 +593,14 @@
 }
 
 
-/* Portfolios Section */
-.portfolios-section {
+/* portfolio Section */
+.portfolio-section {
   background: #1a1a15;
   position: relative;
   z-index: 1;
 }
 
-.portfolios-grid {
+.portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
@@ -1080,7 +1080,7 @@
   }
 
   .services-grid,
-  .portfolios-grid,
+  .portfolio-grid,
   .testimonials-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
